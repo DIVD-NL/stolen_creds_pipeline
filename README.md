@@ -53,7 +53,7 @@ This is a set of stolen and/or leaked credentials, obtained by DIVD in line with
 
 ## Normalize notebook
 
-The normalize notebook is a notebook that attempts to normalize the data to one or more csv files with the following fields:
+The normalize notebook is a notebook that attempts to normalize the data to one or more tsv files with the following fields:
 * username
 * passwd
 * url (Url that the credentials belong to)
@@ -69,7 +69,7 @@ The normalize notebook is a notebook that attempts to normalize the data to one 
 * has ip (0/1 if the record has an ip address)
 * extra_data (json object with extra data)
 
-Thre is no single Jupyter notebook that works for all formats, but the generic normalize notebook in this repo contains helper functions that are usefull.
+There is no single Jupyter notebook that works for all formats, but the generic normalize notebook in this repo contains helper functions that are usefull.
 
 ## Ingest notebook
 
@@ -89,9 +89,9 @@ The ingest notebook takes care of the following tasks:
 ```mermaid
 erDiagram
     ENTITY {
-        str nml_hash PK "indexed"
         str username "indexed"
         str masked_passwd
+        str nml_hash "indexed"
         str url
         str email_apex "indexed"
         str url_apex "indexed"
@@ -102,15 +102,16 @@ erDiagram
         bool has_addr
         bool has_phone
         bool has_cc
-        bool has bankacc
+        bool has_bankacc
         bool has_ssn
-        bool has ip 
+        bool has_ip 
         str extra_data
     }
 
     DIVD {
         str nml_has PK "indexed"
-        str case
+        str case_id
+        str sub_id
         str description
         date date
     }
@@ -145,14 +146,14 @@ The DIVD leak database looks as follows:
 ```mermaid
 erDiagram
     LEAK {
-        str case PK 
+        str case_id PK 
         str sub_id PK "Optional sub identifier"
         str description
         date date
     }
 
     DIVD {
-        str nml_has PK "indexed"
+        str nml_hash PK "indexed"
         str case FK
         str sub_id FK
     }
