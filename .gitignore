@@ -3,6 +3,7 @@ ERR/
 IN/
 NORMALIZED/
 LEAK_DB/
+OUT/
 conf/
 
 # Python stuff
