@@ -1,0 +1,5 @@
+cd full_datasets
+ls -lh
+progress
+mget *.md5
+quit

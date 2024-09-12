@@ -1,0 +1,3 @@
+cd full_datasets
+ls -lh
+progress
