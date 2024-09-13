@@ -109,7 +109,7 @@ erDiagram
     }
 
     DIVD {
-        str nml_has PK "indexed"
+        str nml_hash PK "indexed"
         str case_id
         str sub_id
         str description
@@ -211,8 +211,28 @@ Records where `email_apex` matches \<apex\>. It has the following records:
 
 Records where `url_apex` matches \<apex\>. Same fields as above.
 
-## NML importer and exported
+## NML downloader
 
-Future tbd.
+The No More Leaks download notebook downloads the data from no more leaks
 
+## NML Importer
 
+The No More Leaks import cookbook imports the data into the shared no more leaks database
+
+### NML database
+
+This database looks like this
+
+```mermaid
+erDiagram
+    HASHES {
+        text nml_hash PK "indexed unique" 
+        date first
+        date lsst
+    }
+
+    FILES {
+        text name
+        text md5
+    }
+```
