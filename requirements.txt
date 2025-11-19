@@ -4,3 +4,4 @@ tld
 country_converter
 progressbar2
 duckdb
+jupyter_beeper
